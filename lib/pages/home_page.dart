@@ -17,12 +17,20 @@ class HomePage extends StatelessWidget {
   _body() {
     return Container(
       color: Colors.yellow,
-      child: Center(
-        child: _text(),
-      ),
+      child: SizedBox.expand(
+        child: _img(),
+      )
     );
   }
 
+  _img() {
+//    return Image.network("https://thehappypuppysite.com/wp-content/uploads/2017/10/Cute-Dog-Names-HP-long.jpg");
+    return Image.asset(
+        "assets/images/dog3.png",
+        fit: BoxFit.cover,
+    );
+  }
+  
   _text() {
     return Text(
         "Hello World",
@@ -37,4 +45,6 @@ class HomePage extends StatelessWidget {
         ),
       );
   }
+
+  
 }
