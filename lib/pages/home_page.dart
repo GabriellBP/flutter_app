@@ -18,31 +18,36 @@ class HomePage extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
 
     return Container(
-      color: Colors.white,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget> [
-          _text(),
-          _pageView(),
-          _buttons()
-        ]
+      color: Colors.green,
+      padding: const EdgeInsets.all(16),
+      child: Container(
+        color: Colors.yellow,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget> [
+            _text(),
+            _pageView(),
+            _buttons()
+          ]
+        ),
       )
     );
   }
 
   _pageView() {
     return Container(
-          height: 300,
-          child: PageView(
-            children: <Widget>[
-              _img("assets/images/dog1.png"),
-              _img("assets/images/dog2.png"),
-              _img("assets/images/dog3.png"),
-              _img("assets/images/dog4.png"),
-              _img("assets/images/dog5.png"),
-            ],
-          ),
-        );
+        margin: EdgeInsets.symmetric(vertical: 20),
+        height: 300,
+        child: PageView(
+          children: <Widget>[
+            _img("assets/images/dog1.png"),
+            _img("assets/images/dog2.png"),
+            _img("assets/images/dog3.png"),
+            _img("assets/images/dog4.png"),
+            _img("assets/images/dog5.png"),
+          ],
+        ),
+      );
   }
 
   Column _buttons() {
