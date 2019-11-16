@@ -23,19 +23,57 @@ class HomePage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget> [
           _text(),
-          _img(),
-          _button(),
+          _pageView(),
+          _buttons()
         ]
       )
     );
   }
 
-  _button(){
+  _pageView() {
+    return Container(
+          height: 300,
+          child: PageView(
+            children: <Widget>[
+              _img("assets/images/dog1.png"),
+              _img("assets/images/dog2.png"),
+              _img("assets/images/dog3.png"),
+              _img("assets/images/dog4.png"),
+              _img("assets/images/dog5.png"),
+            ],
+          ),
+        );
+  }
+
+  Column _buttons() {
+    return Column(
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                _button("ListView"),
+                _button("Page 2"),
+                _button("Page 3"),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                _button("Snack"),
+                _button("Dialog"),
+                _button("Toast"),
+              ],
+            ),
+          ],
+        );
+  }
+
+  _button(String text){
     return RaisedButton(
       onPressed: _onClickOk,
       color: Colors.red,
       child: Text(
-        "OK",
+        text,
         style: TextStyle(
           fontSize: 25,
           color: Colors.white,
@@ -48,10 +86,10 @@ class HomePage extends StatelessWidget {
     print("Button pressed");
   }
 
-  _img() {
+  _img(String image) {
 //    return Image.network("https://thehappypuppysite.com/wp-content/uploads/2017/10/Cute-Dog-Names-HP-long.jpg");
     return Image.asset(
-        "assets/images/dog3.png",
+        image,
         fit: BoxFit.cover,
     );
   }
