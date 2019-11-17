@@ -17,7 +17,7 @@ class HelloPage2 extends StatelessWidget {
   _body(BuildContext context) {
     return Center(
       child: RaisedButton(
-        color: Colors.blue,
+        color: Colors.red,
         child: Text(
           "Voltar",
           style: TextStyle(
@@ -31,6 +31,6 @@ class HelloPage2 extends StatelessWidget {
   }
 
   _onPressed(context) {
-    Navigator.pop(context);
+    Navigator.pop(context, "Page 2");
   }
 }
