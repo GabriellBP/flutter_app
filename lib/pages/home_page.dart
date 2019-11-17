@@ -17,14 +17,15 @@ class HomePage extends StatelessWidget {
   _body(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
-    return Container(
-      color: Colors.green,
-      padding: const EdgeInsets.all(16),
+    return SingleChildScrollView(
       child: Container(
         color: Colors.yellow,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget> [
+            _text(),
+            _pageView(),
+            _buttons(),
             _text(),
             _pageView(),
             _buttons()
