@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_app/pages/hello_page1.dart';
+import 'package:flutter_app/pages/hello_page2.dart';
+import 'package:flutter_app/pages/hello_page3.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -53,26 +56,38 @@ class HomePage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                _button(context, "ListView"),
-                _button(context, "Page 2"),
-                _button(context, "Page 3"),
+                _button(context, "ListView", () => _onClickNavigator(context, HelloPage1())),
+                _button(context, "Page 2", () => _onClickNavigator(context, HelloPage2())),
+                _button(context, "Page 3", () => _onClickNavigator(context, HelloPage3())),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                _button(context, "Snack"),
-                _button(context, "Dialog"),
-                _button(context, "Toast"),
+                _button(context, "Snack", _onClickSnack),
+                _button(context, "Dialog", _onClickDialog),
+                _button(context, "Toast", _onClickToast),
               ],
             ),
           ],
         );
   }
 
-  _button(BuildContext context, String text){
+  _onClickNavigator(context, Widget page) {
+    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => page));
+  }
+
+  _onClickSnack() {
+  }
+
+  _onClickDialog() {
+  }
+
+  _onClickToast() {
+  }
+
+  _button(BuildContext context, String text, Function onPressed){
     return RaisedButton(
-      onPressed: () => _onClickOk(context),
       color: Colors.red,
       child: Text(
         text,
@@ -81,11 +96,8 @@ class HomePage extends StatelessWidget {
           color: Colors.white,
         ),
       ),
+      onPressed: onPressed,
     );
-  }
-
-  _onClickOk(context) {
-    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => HelloPage1()));
   }
 
   _img(String image) {
@@ -95,7 +107,7 @@ class HomePage extends StatelessWidget {
         fit: BoxFit.cover,
     );
   }
-  
+
   _text() {
     return Text(
         "Hello World",
@@ -110,6 +122,4 @@ class HomePage extends StatelessWidget {
         ),
       );
   }
-
-  
 }
