@@ -57,7 +57,9 @@ class HomePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 _button(context, "ListView", () => _onClickNavigator(context, HelloPage1())),
-                _button(context, "Page 2", () => _onClickNavigator(context, HelloPage2())),
+                _button(context, "Page 2", () {
+                  _onClickNavigator(context, HelloPage2());
+                }),
                 _button(context, "Page 3", () => _onClickNavigator(context, HelloPage3())),
               ],
             ),
