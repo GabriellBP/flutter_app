@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/pages/hello_page1.dart';
 import 'package:flutter_app/pages/hello_page2.dart';
 import 'package:flutter_app/pages/hello_page3.dart';
+import 'package:flutter_app/widgets/blue_button.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -56,19 +57,37 @@ class HomePage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                _button(context, "ListView", () => _onClickNavigator(context, HelloPage1())),
-                _button(context, "Page 2", () {
-                  _onClickNavigator(context, HelloPage2());
-                }),
-                _button(context, "Page 3", () => _onClickNavigator(context, HelloPage3())),
+                BlueButtom(
+                    "ListView",
+                    onPressed: () => _onClickNavigator(context, HelloPage1())
+                ),
+                BlueButtom(
+                    "Page 2",
+                    onPressed: () {
+                      _onClickNavigator(context, HelloPage2());
+                    }
+                ),
+                BlueButtom(
+                    "Page 3",
+                    onPressed: () => _onClickNavigator(context, HelloPage3())
+                ),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                _button(context, "Snack", _onClickSnack),
-                _button(context, "Dialog", _onClickDialog),
-                _button(context, "Toast", _onClickToast),
+                BlueButtom(
+                    "Snack",
+                    onPressed: _onClickSnack
+                ),
+                BlueButtom(
+                    "Dialog",
+                    onPressed: _onClickDialog
+                ),
+                BlueButtom(
+                    "Toast",
+                    onPressed: _onClickToast
+                ),
               ],
             ),
           ],
@@ -88,20 +107,6 @@ class HomePage extends StatelessWidget {
   }
 
   _onClickToast() {
-  }
-
-  _button(BuildContext context, String text, Function onPressed){
-    return RaisedButton(
-      color: Colors.red,
-      child: Text(
-        text,
-        style: TextStyle(
-          fontSize: 25,
-          color: Colors.white,
-        ),
-      ),
-      onPressed: onPressed,
-    );
   }
 
   _img(String image) {
