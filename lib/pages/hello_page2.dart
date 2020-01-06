@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/utils/nav.dart';
 import 'package:flutter_app/widgets/blue_button.dart';
 
 class HelloPage2 extends StatelessWidget {
@@ -26,6 +27,6 @@ class HelloPage2 extends StatelessWidget {
   }
 
   _onPressed(context) {
-    Navigator.pop(context, "Page 2");
+    pop(context, "Page 2");
   }
 }
