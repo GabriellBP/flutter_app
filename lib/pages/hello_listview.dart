@@ -18,29 +18,33 @@ class _HelloListViewState extends State<HelloListView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar (
-          title: new Text("ListView"),
-          actions: <Widget>[
-            IconButton(icon: Icon(Icons.list), onPressed: () {
-              print("List");
-              setState(() {
-                _gridView = false;
-              });
-            }),
-            IconButton(icon: Icon(Icons.grid_on), onPressed: () {
-              print("Grid");
-              setState(() {
-                _gridView = true;
-              });
-            })
-          ],
+      appBar: AppBar(
+        title: new Text("ListView"),
+        actions: <Widget>[
+          IconButton(
+              icon: Icon(Icons.list),
+              onPressed: () {
+                print("List");
+                setState(() {
+                  _gridView = false;
+                });
+              }),
+          IconButton(
+              icon: Icon(Icons.grid_on),
+              onPressed: () {
+                print("Grid");
+                setState(() {
+                  _gridView = true;
+                });
+              })
+        ],
       ),
       body: _body(),
     );
   }
 
   _body() {
-    final List<Dog> dogs= [
+    final List<Dog> dogs = [
       Dog("Jack Russel", "assets/images/dog1.png"),
       Dog("Labrador", "assets/images/dog2.png"),
       Dog("Pug", "assets/images/dog3.png"),
@@ -48,9 +52,10 @@ class _HelloListViewState extends State<HelloListView> {
       Dog("Pastor", "assets/images/dog5.png"),
     ];
 
-    if(_gridView) {
+    if (_gridView) {
       return GridView.builder(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+        gridDelegate:
+            SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
         itemCount: dogs.length,
         itemBuilder: (BuildContext context, int index) {
           return _itemView(dogs, index);
@@ -65,7 +70,6 @@ class _HelloListViewState extends State<HelloListView> {
         },
       );
     }
-
   }
 
   Stack _itemView(List<Dog> dogs, int index) {
@@ -81,9 +85,7 @@ class _HelloListViewState extends State<HelloListView> {
             margin: EdgeInsets.all(12),
             padding: EdgeInsets.all(8),
             decoration: BoxDecoration(
-              color: Colors.black45,
-              borderRadius: BorderRadius.circular(16)
-            ),
+                color: Colors.black45, borderRadius: BorderRadius.circular(16)),
             child: Text(
               dog.nome,
               style: TextStyle(fontSize: 26, color: Colors.white),
