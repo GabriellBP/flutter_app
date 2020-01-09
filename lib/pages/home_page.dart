@@ -6,6 +6,7 @@ import 'package:flutter_app/pages/hello_page2.dart';
 import 'package:flutter_app/pages/hello_page3.dart';
 import 'package:flutter_app/utils/nav.dart';
 import 'package:flutter_app/widgets/blue_button.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -132,7 +133,17 @@ class HomePage extends StatelessWidget {
         });
   }
 
-  _onClickToast() {}
+  _onClickToast() {
+    Fluttertoast.showToast(
+        msg: "Flutter é muito legal!",
+        toastLength: Toast.LENGTH_LONG,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIos: 5,
+        backgroundColor: Colors.greenAccent,
+        textColor: Colors.white,
+        fontSize: 16.0
+    );
+  }
 
   _img(String image) {
 //    return Image.network("https://thehappypuppysite.com/wp-content/uploads/2017/10/Cute-Dog-Names-HP-long.jpg");
