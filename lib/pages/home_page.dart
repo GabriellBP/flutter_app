@@ -22,9 +22,7 @@ class HomePage extends StatelessWidget {
   }
 
   _body(BuildContext context) {
-    Size size = MediaQuery
-        .of(context)
-        .size;
+    Size size = MediaQuery.of(context).size;
 
     return Container(
       color: Colors.yellow,
@@ -34,8 +32,7 @@ class HomePage extends StatelessWidget {
             _text(),
             _pageView(),
             _buttons(),
-          ]
-      ),
+          ]),
     );
   }
 
@@ -56,48 +53,35 @@ class HomePage extends StatelessWidget {
   }
 
   _buttons() {
-    return Builder(builder: (context) {
-      return Column(
-        children: <Widget>[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              BlueButtom(
-                  "ListView",
-                  onPressed: () => _onClickNavigator(context, HelloListView())
-              ),
-              BlueButtom(
-                  "Page 2",
-                  onPressed: () {
-                    _onClickNavigator(context, HelloPage2());
-                  }
-              ),
-              BlueButtom(
-                  "Page 3",
-                  onPressed: () => _onClickNavigator(context, HelloPage3())
-              ),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              BlueButtom(
-                  "Snack",
-                  onPressed: () => _onClickSnack(context)
-              ),
-              BlueButtom(
-                  "Dialog",
-                  onPressed: _onClickDialog
-              ),
-              BlueButtom(
-                  "Toast",
-                  onPressed: _onClickToast
-              ),
-            ],
-          ),
-        ],
-      );
-    },);
+    return Builder(
+      builder: (context) {
+        return Column(
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                BlueButtom("ListView",
+                    onPressed: () =>
+                        _onClickNavigator(context, HelloListView())),
+                BlueButtom("Page 2", onPressed: () {
+                  _onClickNavigator(context, HelloPage2());
+                }),
+                BlueButtom("Page 3",
+                    onPressed: () => _onClickNavigator(context, HelloPage3())),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                BlueButtom("Snack", onPressed: () => _onClickSnack(context)),
+                BlueButtom("Dialog", onPressed: () => _onClickDialog(context)),
+                BlueButtom("Toast", onPressed: _onClickToast),
+              ],
+            ),
+          ],
+        );
+      },
+    );
   }
 
   _onClickNavigator(context, Widget page) async {
@@ -119,11 +103,36 @@ class HomePage extends StatelessWidget {
     ));
   }
 
-  _onClickDialog() {
+  _onClickDialog(BuildContext context) {
+    showDialog(
+        context: context,
+        barrierDismissible: false,  // clicks outside the alert don't close it
+        builder: (context) {
+          return WillPopScope(
+            onWillPop: () async => false,  // back button don't close the alert
+            child: AlertDialog(
+              title: Text("Flutter é muito legal!"),
+              actions: <Widget>[
+                FlatButton(
+                  child: Text("Cancelar"),
+                  onPressed: () {
+                    pop(context, null);
+                  },
+                ),
+                FlatButton(
+                  child: Text("Ok"),
+                  onPressed: () {
+                    print("OK Dialog!!!");
+                    pop(context, null);
+                  },
+                ),
+              ],
+            ),
+          );
+        });
   }
 
-  _onClickToast() {
-  }
+  _onClickToast() {}
 
   _img(String image) {
 //    return Image.network("https://thehappypuppysite.com/wp-content/uploads/2017/10/Cute-Dog-Names-HP-long.jpg");
@@ -143,7 +152,6 @@ class HomePage extends StatelessWidget {
         decoration: TextDecoration.underline,
         decorationColor: Colors.blue,
         decorationStyle: TextDecorationStyle.wavy,
-
       ),
     );
   }
